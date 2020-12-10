@@ -1,0 +1,2 @@
+INSERT INTO `app-citas-medicas`.citas (id, fecha, hora_inicio, hora_final, id_medico, id_paciente) VALUES (1, '2020-12-12', '08:00:00', '08:30:00', 8, 6);
+INSERT INTO `app-citas-medicas`.citas (id, fecha, hora_inicio, hora_final, id_medico, id_paciente) VALUES (2, '2021-01-20', '08:00:00', '08:30:00', 8, 6);

@@ -1,0 +1,1 @@
+INSERT INTO `app-citas-medicas`.medico (id, num_tarjeta_prof, grupo_sang, RH, especialidad_med, EPS, usuario_id) VALUES (2, '1AS526S15S145', 'A', 'NEGATIVO', 'NEUROCIRUJANA', 'MUTUALSER', 8);

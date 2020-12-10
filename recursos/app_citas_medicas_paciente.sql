@@ -1,0 +1,1 @@
+INSERT INTO `app-citas-medicas`.paciente (id, grupo_sang, RH, profesion, ocupacion, tipo_afiliacion, estado_afiliacion, usuario_id) VALUES (3, 'A', 'POSITIVO', 'Ingeniero de Sistemas', 'Desarrollador WEB', 'Normal', 1, 6);

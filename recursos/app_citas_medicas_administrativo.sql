@@ -1,0 +1,1 @@
+INSERT INTO `app-citas-medicas`.administrativo (id, nombre_cargo, codigo_cargo, usuario_id) VALUES (3, 'GERENTE', 'AHJF5', 7);
