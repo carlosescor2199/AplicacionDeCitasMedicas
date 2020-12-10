@@ -16,8 +16,11 @@ import java.util.List;
 public class CitaControllerImp implements CitaController {
     @Override
     public void agendarCita(Cita cita) {
+
+        //Variables para validar existencia de disponibilidad
         boolean coincidenciaCita = false;
         boolean coincidenciaHorario = false;
+        // Se consultan las citas
         HorarioController horarioController = new HorarioControllerImp();
         ArrayList<Cita> citas = (ArrayList<Cita>) this.listarTodasCitas();
         ArrayList<Horario> horarios = (ArrayList<Horario>) horarioController.consultarHorario(cita.getIdMedico());
@@ -28,6 +31,7 @@ public class CitaControllerImp implements CitaController {
                 coincidenciaCita = true;
             }
         }
+        // Se consultan los horarios
         for(Horario horarioAux : horarios) {
             Date fechaHorarioInicio = Date.valueOf(horarioAux.getFechaInicio());
             Date fechaHorarioFinal = Date.valueOf(horarioAux.getFechaFinal());
@@ -44,6 +48,8 @@ public class CitaControllerImp implements CitaController {
                 coincidenciaHorario = true;
             }
         }
+
+        // se inserta la cita
         if(!coincidenciaCita && coincidenciaHorario){
             try {
                 PreparedStatement ps = getInstance().prepareStatement("insert into citas (fecha, hora_inicio, hora_final, id_medico, id_paciente) values (?,?,?,?,?);");
@@ -60,6 +66,7 @@ public class CitaControllerImp implements CitaController {
 
     }
 
+    //lista de citas de un paciente
     @Override
     public List<Cita> consultarCitas(int id, int idPaciente, int idMedico) {
         ArrayList<Cita> citas = new ArrayList<>();
@@ -81,6 +88,7 @@ public class CitaControllerImp implements CitaController {
         return citas;
     }
 
+    //Lista de todas las citas
     @Override
     public List<Cita> listarTodasCitas() {
         ArrayList<Cita> citas = new ArrayList<>();
@@ -99,6 +107,7 @@ public class CitaControllerImp implements CitaController {
         return citas;
     }
 
+    //Se elimina la cita
     @Override
     public void eliminarCita(int id) {
         try {

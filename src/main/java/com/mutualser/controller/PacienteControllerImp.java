@@ -13,11 +13,12 @@ import java.util.List;
 public class PacienteControllerImp implements PacienteController {
     @Override
     public void registrarPaciente(Paciente paciente) throws SQLException {
+        //Se inserta el paciente usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_paciente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, paciente.getId());
         ps.setString(2, paciente.getNombre());
         ps.setString(3, paciente.getApellido());
-        ps.setLong(4, paciente.getNumIdentificación());
+        ps.setLong(4, paciente.getNumIdentificacion());
         ps.setString(5, paciente.getTipoDoc());
         ps.setString(6, paciente.getFechaNac());
         ps.setString(7, paciente.getSexo());
@@ -41,13 +42,16 @@ public class PacienteControllerImp implements PacienteController {
 
     @Override
     public Paciente consultarPaciente(int id) {
+        //Obtener todos los pacientes
         Paciente paciente = null;
         try {
-
+            //Hacer consulta
             PreparedStatement ps = getInstance().prepareStatement("select * from usuarios u, paciente p where p.usuario_id = u.id and  u.id = ?;");
             ps.setInt(1, id);
+            //Recibir datos
             ResultSet r = ps.executeQuery();
             if(r.next()){
+                //Agregar objetos
                 paciente = new Paciente(r.getInt(1), r.getString(2), r.getString(3),
                         r.getLong(4), r.getString(5), r.getString(6), r.getString(7),
                         r.getString(8), r.getString(9), r.getString(10), r.getString(11),
@@ -58,18 +62,22 @@ public class PacienteControllerImp implements PacienteController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        //retornar pacientes
         return paciente;
     }
 
     @Override
     public List<Paciente> listarPaciente() {
+        //Obtener todos los pacientes
         ArrayList<Paciente> pacientes = new ArrayList<>();
         try {
+            //Hacer consulta
             Paciente paciente = null;
             PreparedStatement ps = getInstance().prepareStatement("select * from usuarios u, paciente p where p.usuario_id = u.id;");
+            //Recibir datos
             ResultSet r = ps.executeQuery();
             while(r.next()){
+                //Agregar objetos
                 paciente = new Paciente(r.getInt(1), r.getString(2), r.getString(3),
                         r.getLong(4), r.getString(5), r.getString(6), r.getString(7),
                         r.getString(8), r.getString(9), r.getString(10), r.getString(11),
@@ -81,17 +89,18 @@ public class PacienteControllerImp implements PacienteController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        //retornar pacientes
         return pacientes;
     }
 
     @Override
     public void actualizarPaciente(Paciente paciente) throws SQLException {
+        //Se actualiza el paciente usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_paciente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, paciente.getId());
         ps.setString(2, paciente.getNombre());
         ps.setString(3, paciente.getApellido());
-        ps.setLong(4, paciente.getNumIdentificación());
+        ps.setLong(4, paciente.getNumIdentificacion());
         ps.setString(5, paciente.getTipoDoc());
         ps.setString(6, paciente.getFechaNac());
         ps.setString(7, paciente.getSexo());
@@ -115,6 +124,7 @@ public class PacienteControllerImp implements PacienteController {
 
     @Override
     public void eliminarPaciente(int id) throws SQLException {
+        //Se elimina el paciente usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_paciente(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, id);
         ps.setString(2, "");

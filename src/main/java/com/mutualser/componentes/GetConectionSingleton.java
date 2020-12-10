@@ -10,6 +10,8 @@ public class GetConectionSingleton {
 
     private static Connection connection;
 
+    //Se crea una instacia de la conexion bajo el patrón de diseño singleton, esto para no hacer llamados redundantes a la bd y por ende no sobrecargar
+    //de peticiones
     public static Connection getInstance() {
 
         if (connection == null) {

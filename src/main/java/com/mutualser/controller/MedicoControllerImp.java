@@ -14,11 +14,12 @@ public class MedicoControllerImp implements MedicoController {
 
     @Override
     public void registrarMedico(Medico medico) throws SQLException {
+        //Se inserta el medico usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_medico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, medico.getId());
         ps.setString(2, medico.getNombre());
         ps.setString(3, medico.getApellido());
-        ps.setLong(4, medico.getNumIdentificación());
+        ps.setLong(4, medico.getNumIdentificacion());
         ps.setString(5, medico.getTipoDoc());
         ps.setString(6, medico.getFechaNac());
         ps.setString(7, medico.getSexo());
@@ -39,6 +40,7 @@ public class MedicoControllerImp implements MedicoController {
         ps.execute();
     }
 
+    //Se consulta un medico
     @Override
     public Medico consultarMedico(int id) {
         Medico medico = null;
@@ -60,6 +62,7 @@ public class MedicoControllerImp implements MedicoController {
         return medico;
     }
 
+    //Se consultan todos los medicos
     @Override
     public List<Medico> listarMedico() {
         ArrayList<Medico> medicos = new ArrayList<>();
@@ -85,11 +88,12 @@ public class MedicoControllerImp implements MedicoController {
 
     @Override
     public void actualizarMedico(Medico medico) throws SQLException {
+        //Se actualiza un medico usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_medico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, medico.getId());
         ps.setString(2, medico.getNombre());
         ps.setString(3, medico.getApellido());
-        ps.setLong(4, medico.getNumIdentificación());
+        ps.setLong(4, medico.getNumIdentificacion());
         ps.setString(5, medico.getTipoDoc());
         ps.setString(6, medico.getFechaNac());
         ps.setString(7, medico.getSexo());
@@ -112,6 +116,7 @@ public class MedicoControllerImp implements MedicoController {
 
     @Override
     public void eliminarMedico(int id) throws SQLException {
+        //Se elimina un medico usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_medico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, id);
         ps.setString(2, "");

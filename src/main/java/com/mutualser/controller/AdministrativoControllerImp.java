@@ -14,11 +14,12 @@ import static com.mutualser.componentes.GetConectionSingleton.getInstance;
 public class AdministrativoControllerImp implements AdministrativoController {
     @Override
     public void registrarAdministrativo(Administrativo administrativo) throws SQLException {
+        //Se inserta el administrativo usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_administrativo(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, administrativo.getId());
         ps.setString(2, administrativo.getNombre());
         ps.setString(3, administrativo.getApellido());
-        ps.setLong(4, administrativo.getNumIdentificación());
+        ps.setLong(4, administrativo.getNumIdentificacion());
         ps.setString(5, administrativo.getTipoDoc());
         ps.setString(6, administrativo.getFechaNac());
         ps.setString(7, administrativo.getSexo());
@@ -36,6 +37,7 @@ public class AdministrativoControllerImp implements AdministrativoController {
         ps.execute();
     }
 
+    //Se consulta un administrativo
     @Override
     public Administrativo consultarAdministrativo(int id) {
         Administrativo administrativo = null;
@@ -56,6 +58,7 @@ public class AdministrativoControllerImp implements AdministrativoController {
         return administrativo;
     }
 
+    //Se obtienen todos los administrativos
     @Override
     public List<Administrativo> listarAdministrativo() {
         ArrayList<Administrativo> administrativos = new ArrayList<>();
@@ -79,11 +82,12 @@ public class AdministrativoControllerImp implements AdministrativoController {
 
     @Override
     public void actualizarAdministrativo(Administrativo administrativo) throws SQLException {
+        //Se actualiza el administrativo usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_administrativo(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, administrativo.getId());
         ps.setString(2, administrativo.getNombre());
         ps.setString(3, administrativo.getApellido());
-        ps.setLong(4, administrativo.getNumIdentificación());
+        ps.setLong(4, administrativo.getNumIdentificacion());
         ps.setString(5, administrativo.getTipoDoc());
         ps.setString(6, administrativo.getFechaNac());
         ps.setString(7, administrativo.getSexo());
@@ -103,6 +107,7 @@ public class AdministrativoControllerImp implements AdministrativoController {
 
     @Override
     public void eliminarAdministrativo(int id) throws SQLException {
+        //Se elimina el administrativo usando un procedimiento almacenado
         PreparedStatement ps = getInstance().prepareStatement("call op_administrativo(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
         ps.setInt(1, id);
         ps.setString(2, "");

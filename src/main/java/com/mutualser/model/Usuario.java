@@ -4,7 +4,7 @@ public class Usuario {
     private int id;
     private String nombre;
     private String apellido;
-    private long numIdentificación;
+    private long numIdentificacion;
     private String tipoDoc;
     private String fechaNac;
     private String sexo;
@@ -17,11 +17,11 @@ public class Usuario {
     private String email;
     private String password;
 
-    public Usuario(int id, String nombre, String apellido, long numIdentificación, String tipoDoc, String fechaNac, String sexo, String estadoCivil, String direccion, String municipioResidencia, String departamentoResidencia, String tel1, String tel2, String email, String password) {
+    public Usuario(int id, String nombre, String apellido, long numIdentificacion, String tipoDoc, String fechaNac, String sexo, String estadoCivil, String direccion, String municipioResidencia, String departamentoResidencia, String tel1, String tel2, String email, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.numIdentificación = numIdentificación;
+        this.numIdentificacion = numIdentificacion;
         this.tipoDoc = tipoDoc;
         this.fechaNac = fechaNac;
         this.sexo = sexo;
@@ -59,12 +59,12 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public long getNumIdentificación() {
-        return numIdentificación;
+    public long getNumIdentificacion() {
+        return numIdentificacion;
     }
 
-    public void setNumIdentificación(Long numIdentificación) {
-        this.numIdentificación = numIdentificación;
+    public void setNumIdentificacion(Long numIdentificacion) {
+        this.numIdentificacion = numIdentificacion;
     }
 
     public String getTipoDoc() {

@@ -14,7 +14,7 @@ public class ConectarMySQL {
                          String password) {
 
         try {
-
+            //Crear instancia jdbc
             Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 
 
